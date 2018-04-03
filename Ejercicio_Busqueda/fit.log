@@ -1,0 +1,60 @@
+
+
+*******************************************************************************
+Tue Apr  3 18:56:04 2018
+
+
+FIT:    data read from 'tiempo_bbinaria.dat'
+        format = z
+        #datapoints = 100
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*(log(x)/log(2))
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 6.4001464496e-11   0.00e+00  1.92e-06    1.035993e-07
+   3 1.9036427692e-11  -2.32e-07  1.92e-09    6.733044e-08
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.90364e-11
+rel. change during last iteration : -2.31503e-12
+
+degrees of freedom    (FIT_NDF)                        : 99
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 4.38506e-07
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.92287e-13
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.73304e-08      +/- 2.372e-09    (3.523%)
+
+
+*******************************************************************************
+Tue Apr  3 18:56:22 2018
+
+
+FIT:    data read from 'tiempo_bternaria.dat'
+        format = z
+        #datapoints = 100
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = b*(log(x)/log(2))
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   b            
+   0 4.2997805073e-10   0.00e+00  5.73e-11    3.099081e-12
+   3 6.3122982903e-11  -5.70e-07  5.73e-14    1.035993e-07
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 6.3123e-11
+rel. change during last iteration : -5.69626e-12
+
+degrees of freedom    (FIT_NDF)                        : 99
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 7.98502e-07
+variance of residuals (reduced chisquare) = WSSR/ndf   : 6.37606e-13
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+b               = 1.03599e-07      +/- 4.319e-09    (4.169%)

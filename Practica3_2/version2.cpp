@@ -90,21 +90,26 @@ int buscarCiudadCardinalidad(map<int, pair<double, double> > & M, int opcion) {
 }
 
 void insercionTSP(vector< vector<double> >& distancias, vector<int>& candidatas, 
-                  vector<int>& solucion, map<int, pair<double, double> > & M) {
+                  vector<int>& solucion, map<int, pair<double, double> > M) {
     double coste, costeAux;
-    int ciudadNorte = buscarCiudadCardinalidad(M, 1),       // Se busca la ciudad mas al norte
-        ciudadOeste = buscarCiudadCardinalidad(M, 2),       // Se busca la ciudad mas al oeste
-        ciudadEste  = buscarCiudadCardinalidad(M, 3);       // Se busca la ciudad mas al este
+    int ciudadNorte, ciudadOeste, ciudadEste;       
     vector<int>::iterator posicion;
     int nodoActual, nodoSiguiente, ciudadInsertar, ciudadEliminar;
-
-    solucion.push_back(ciudadNorte); 
-    solucion.push_back(ciudadOeste);
-    solucion.push_back(ciudadEste);
-
+    
+    ciudadNorte = buscarCiudadCardinalidad(M, 1);                               // Se busca la ciudad mas al norte
+    solucion.push_back(ciudadNorte);
     candidatas.erase(find(candidatas.begin(), candidatas.end(), ciudadNorte));
+    M.erase(ciudadNorte);
+    
+    ciudadOeste = buscarCiudadCardinalidad(M, 2);                               // Se busca la ciudad mas al oeste
+    solucion.push_back(ciudadOeste);
     candidatas.erase(find(candidatas.begin(), candidatas.end(), ciudadOeste));
+    M.erase(ciudadOeste);
+    
+    ciudadEste  = buscarCiudadCardinalidad(M, 3);                               // Se busca la ciudad mas al este
+    solucion.push_back(ciudadEste);
     candidatas.erase(find(candidatas.begin(), candidatas.end(), ciudadEste));
+    M.erase(ciudadEste);
 
     while (candidatas.size() > 0) {
         coste = INT_MAX;
@@ -153,19 +158,16 @@ int main(int argc, char * argv[]) {
         candidatas.push_back(i + 1);
 
     insercionTSP(distancias, candidatas, solucion, M);
-/*  
-    for (std::map<int, pair<double, double> >::iterator it=M.begin();it!=M.end(); ++it) {
-      cout <<(*it).first<<" "<<((*it).second).first << " " << ((*it).second).second << endl;
-    }
-
-    double coste = 0;
-
-    for (int i = 0; i < solucion.size(); i++)
-        coste += distancias[solucion[i] - 1][solucion[(i+1) % solucion.size()] - 1];
-    cout << coste << endl;
- */
 
     for (auto iter = solucion.begin(); iter != solucion.end(); ++iter)
         cout << *iter << endl;
+
+/*
+    double coste = 0;
+    cout << solucion.size() << endl;
+    for (int i = 0; i < solucion.size(); i++)
+        coste += distancias[solucion[i] - 1][solucion[(i+1) % solucion.size()] - 1];
+    cout << coste << endl;
+*/
     return 0;
 }

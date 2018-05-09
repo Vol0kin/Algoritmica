@@ -2,7 +2,29 @@
 
 % De esta forma se pueden usar caracteres del UTF-8
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
 
 % De esta forma se establece el titulo (esta zona es el preambulo)
 \title{
@@ -18,6 +40,17 @@
   \maketitle			  % Se inserta el titulo creado en el preambulo
   \newpage				  % Se inserta una nueva pagina
   \pagenumbering{arabic} % Se utiliza la numeracion de pagina arabica
- HELLO WORLD!
-  Esto me está empezando a gustar. No se muy bien que estoy haciendo despierto a estas horas de la noche pero lo unico que se es que me voy a dormir ya.
+  
+  \section{Introducción}
+  En este ejercicio se ha pedido que se implementen tres versiones de un programa que, dado un conjunto de \textit{n} números que van desde 1 hasta \textit{n}+1, y un número \textit{M}, encuentre todos los subconjuntos de números que sumen exactamente \textit{M}. Adicionalmente se ha pedido realizar un análisis empírico con las tres versiones para ver cuál de ellas era la más eficiente respecto al tiempo que tardaba en realizar los cálculos.\\\\
+  En esta memoria se va a realizar primero una explicación rápida de la implementación realizada en cada una de las versiones, y a continuación se mostrarán los resultados del estudio empírico realizado para determinar cuál es la implementación más eficiente.
+  
+  \section{Implementación}
+  En general, para todas las implementaciones realizadas, se ha utilizado el TDA \textbf{Solucion} que aparecía en las transparencias de clase, modificándolo según las necesidades de la versión. En casi todas las versiones se han implementado los métodos de la misma forma que estaban especificados en las transparencias, excepto en las que se comentarán más abajo. Adicionalmente se ha implementado un método extra para una de las versiones que permita comprobar que los resultados obtenidos son los correctos. Cabe mencionar además que se ha incluido un atributo más al TDA, \textit{objetivo}, que se corresponde con el número \textit{M} mencionado anteriormente, y que los números que conforman el vector \textit{w} han sido inicializados desde 1 hasta \textit{n}+1, siendo \textit{n} el tamaño del vector solución.\\\\
+  La primera versión ha consistido en la implementación de un algoritmo de \textit{fuerza bruta} que se ha encargado de construir todos los posibles subconjuntos de números. Para ello, se ha hecho uso de una función recursiva que ha permitido recorrer el árbol de estados generando los correspondientes nodos sucesores. En este caso se ha implementado un método adicional que recorre el vector solución y comprueba si se da que:
+  \[
+  \sum_{i=0}^{n}X[i]w[i]=M
+  \]
+  A continuación se adjunta el código de la función recursiva:
+  
 \end{document}

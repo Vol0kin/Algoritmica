@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -90,10 +91,10 @@ bool Solucion::solucionCorrecta() const{
 
 void fuerzaBruta(Solucion& sol, int k) {
     if (k == sol.size()) {
-        if (sol.solucionCorrecta())
-            sol.procesaSolucion();
-    }
-    else {
+        if (sol.solucionCorrecta()) {
+            //sol.procesaSolucion();
+        }
+    } else {
         sol.iniciaComp(k);
         sol.sigValComp(k);
 
@@ -106,6 +107,7 @@ void fuerzaBruta(Solucion& sol, int k) {
 
 int main(int argc, char *argv[]) {
     int tam_max, objetivo;
+    clock_t t1, t2;
 
     if (argc != 3) {
         cerr << "Error en " << argv[0] << endl;
@@ -117,7 +119,14 @@ int main(int argc, char *argv[]) {
     objetivo = atoi(argv[2]);
 
     Solucion sol(tam_max, objetivo);
+
+    t1 = clock();
+
     fuerzaBruta(sol, 0);
+
+    t2 = clock();
+
+    cout << tam_max << ' ' << ((double)(t2 - t1)) / CLOCKS_PER_SEC << endl;
 
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -89,10 +90,9 @@ bool Solucion::solucionCorrecta() const{
 }
 
 void backRecursivo(Solucion& sol, int k) {
-    if (k == sol.size())
-        sol.procesaSolucion();
-
-    else {
+    if (k == sol.size()) {
+        //sol.procesaSolucion();
+    } else {
         sol.iniciaComp(k);
         sol.sigValComp(k);
 
@@ -106,6 +106,7 @@ void backRecursivo(Solucion& sol, int k) {
 
 int main(int argc, char *argv[]) {
     int tam_max, objetivo;
+    clock_t t1, t2;
 
     if (argc != 3) {
         cerr << "Error en " << argv[0] << endl;
@@ -118,7 +119,13 @@ int main(int argc, char *argv[]) {
 
     Solucion sol(tam_max, objetivo);
     
+    t1 = clock();
+
     backRecursivo(sol, 0);
+
+    t2 = clock();
+
+    cout << tam_max << ' ' << ((double)(t2 - t1)) / CLOCKS_PER_SEC << endl; 
 
     return 0;
 }
